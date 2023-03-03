@@ -1,0 +1,14 @@
+      <div class="main mt-3">
+        <label class="m-2">Add a task</label>
+        <div class="mb-2 p-3">
+          <input type="text" class="form-control-sm" placeholder="add a task" (keydown)="empty($event)" [(ngModel)]="taskName">
+          <button *ngIf="!isEdit" class="btn btn-primary ms-2" [disabled]="isEmpty" (click)="addTodo()">add task</button>
+          <button *ngIf="isEdit" type="button" class="btn btn-dark ms-2" [disabled]="isEmpty" (click)="updateTask()">update task</button> 
+        </div>   
+        <div class="middle" *ngFor="let task of taskList; let i = index">
+          <span>{{task.name}}</span>
+          <button type="button" class="btn btn-warning m-2" (click)="deleteTodo(i)">delete</button>
+          <button type="button" class="btn btn-danger" (click)="editTodo(task)">edit task</button>
+        </div>
+      </div>
+
